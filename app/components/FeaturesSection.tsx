@@ -2,322 +2,823 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-interface FeatureData {
+interface CoreFeatureCard {
+  title: string;
+  description: string;
+  iconBg: string;
+  iconColor: string;
+  icon: React.ReactNode;
+}
+
+interface KeyFeatureBullet {
+  icon: React.ReactNode;
+  iconBg: string;
+  iconColor: string;
+  title: string;
+  desc: string;
+}
+
+interface SidebarFeature {
   id: string;
   tabLabel: string;
-  heroTitle: string;
-  heroDesc: string;
+  headline: string;
+  description: string;
   imageSrc: string;
-  weeklyGoalText: string;
-  weeklyGoalProgress: number;
-  statBox1: { label: string; value: string };
-  statBox2: { label: string; value: string };
-  card1Title: string;
-  card1Desc: string;
-  card1Total: string;
-  card1Breakdown: { label: string; count: number; color: string }[];
-  card2Title: string;
-  card2Desc: string;
-  card2Summary: string;
-  card2Stat: string;
+  keyFeatures: KeyFeatureBullet[];
 }
 
 export default function FeaturesSection() {
-  const features: FeatureData[] = [
+  // 1. The 3x2 Core Feature Cards Grid matching user's exact specification
+  const coreFeatures: CoreFeatureCard[] = [
+    {
+      title: "Property & Room Management",
+      description: "Add and manage multiple properties, rooms, rates and availability with ease and accuracy.",
+      iconBg: "bg-blue-50",
+      iconColor: "text-blue-600",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+      ),
+    },
+    {
+      title: "Booking Management",
+      description: "View, create and manage bookings with a real-time calendar and smart availability control.",
+      iconBg: "bg-emerald-50",
+      iconColor: "text-emerald-600",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Guest Management",
+      description: "Store guest details, track history, and build stronger relationships for repeat stays.",
+      iconBg: "bg-amber-50",
+      iconColor: "text-amber-600",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Payment Management",
+      description: "Track payments, invoices, deposits, and pending balances in one centralized system.",
+      iconBg: "bg-purple-50",
+      iconColor: "text-purple-600",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Tasks & Operations",
+      description: "Assign tasks, track housekeeping, maintenance, and daily operations efficiently.",
+      iconBg: "bg-cyan-50",
+      iconColor: "text-cyan-600",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Reports & Insights",
+      description: "Get real-time reports and insights to make smarter decisions and grow your business.",
+      iconBg: "bg-indigo-50",
+      iconColor: "text-indigo-600",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
+        </svg>
+      ),
+    },
+  ];
+
+  // 2. Sidebar Interactive Features with Soft Rounded Icon Boxes
+  const sidebarFeatures: SidebarFeature[] = [
     {
       id: "booking",
       tabLabel: "Villa Booking & Calendar",
-      heroTitle: "Smart Reservation & Calendar Management",
-      heroDesc: "InnHandler streamlines all villa bookings, instant reservation sync, and guest check-ins in one unified interactive calendar view.",
+      headline: "Smart Reservation Grid & Real-Time Availability",
+      description:
+        "View, create, and manage bookings across all your properties with a dynamic calendar, smart availability controls, and automated check-in/out tracking.",
       imageSrc: "/feature_booking.jpg",
-      weeklyGoalText: "24 of 25 Villas Booked",
-      weeklyGoalProgress: 96,
-      statBox1: { label: "Task Streak", value: "14 Days" },
-      statBox2: { label: "New Record", value: "96% Occupancy" },
-      card1Title: "Track Booking Progress",
-      card1Desc: "Track your reservation lifecycle with full visual status cues every step of the way.",
-      card1Total: "105 Reservations",
-      card1Breakdown: [
-        { label: "Confirmed", count: 64, color: "bg-blue-600" },
-        { label: "Checked-in", count: 28, color: "bg-emerald-500" },
-        { label: "Pending Payment", count: 13, color: "bg-amber-500" },
+      keyFeatures: [
+        {
+          iconBg: "bg-blue-50",
+          iconColor: "text-blue-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          ),
+          title: "Interactive Timeline Grid",
+          desc: "Manage daily, weekly, and monthly reservations visually.",
+        },
+        {
+          iconBg: "bg-emerald-50",
+          iconColor: "text-emerald-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          ),
+          title: "Multi-Property Filtering",
+          desc: "Switch between individual villas or monitor your entire portfolio at once.",
+        },
+        {
+          iconBg: "bg-amber-50",
+          iconColor: "text-amber-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          ),
+          title: "Flexible Booking Flow",
+          desc: "Select rooms first and defer payment collection until guest arrival.",
+        },
+        {
+          iconBg: "bg-purple-50",
+          iconColor: "text-purple-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          ),
+          title: "Instant PDF Invoices",
+          desc: "Auto-generate branded single-page receipts upon booking confirmation.",
+        },
       ],
-      card2Title: "AI-Powered Booking Analytics",
-      card2Desc: "Receive real-time forecasting and occupancy trend analyses for your luxury properties.",
-      card2Summary: "96% Occupancy Rate",
-      card2Stat: "+14.2% vs last month",
+    },
+    {
+      id: "housekeeping",
+      tabLabel: "Housekeeping & Operations",
+      headline: "Task Tracking & Daily Villa Operations",
+      description:
+        "Assign housekeeping duties, track maintenance requests, and monitor daily villa operations visually with real-time status updates.",
+      imageSrc: "/feature_insights.jpg",
+      keyFeatures: [
+        {
+          iconBg: "bg-cyan-50",
+          iconColor: "text-cyan-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          ),
+          title: "Room Status Tracking",
+          desc: "Real-time indicators for Clean, Dirty, In-Progress, and Inspected rooms.",
+        },
+        {
+          iconBg: "bg-blue-50",
+          iconColor: "text-blue-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          ),
+          title: "Staff Task Assignment",
+          desc: "Assign housekeeping and maintenance duties to team members effortlessly.",
+        },
+        {
+          iconBg: "bg-orange-50",
+          iconColor: "text-orange-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          ),
+          title: "Work Order Management",
+          desc: "Log maintenance issues and track resolution progress.",
+        },
+        {
+          iconBg: "bg-emerald-50",
+          iconColor: "text-emerald-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+          title: "Operational Checklists",
+          desc: "Ensure high standards and guest satisfaction before every check-in.",
+        },
+      ],
     },
     {
       id: "reporting",
       tabLabel: "Reporting & Insights",
-      heroTitle: "Activity Tracking & Financial Insights",
-      heroDesc: "InnHandler is built to work seamlessly on mobile and desktop devices, ensuring you stay connected to revenue performance from anywhere.",
+      headline: "Financial Analytics & Performance Insights",
+      description:
+        "Monitor your villa performance with interactive metrics, automated monthly revenue summaries, and real-time occupancy trends.",
       imageSrc: "/feature_insights.jpg",
-      weeklyGoalText: "Weekly Task Goal (18 of 20 tasks complete)",
-      weeklyGoalProgress: 90,
-      statBox1: { label: "Task Streak", value: "12 Days" },
-      statBox2: { label: "New Record", value: "5 Tasks in a day" },
-      card1Title: "Track Task Progress",
-      card1Desc: "Track your villa housekeeping & maintenance progress with visual cues at every step.",
-      card1Total: "105 Tasks",
-      card1Breakdown: [
-        { label: "Not started", count: 14, color: "bg-blue-500" },
-        { label: "In progress", count: 22, color: "bg-purple-500" },
-        { label: "On Review", count: 11, color: "bg-amber-500" },
-        { label: "Completed", count: 58, color: "bg-emerald-500" },
+      keyFeatures: [
+        {
+          iconBg: "bg-indigo-50",
+          iconColor: "text-indigo-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
+            </svg>
+          ),
+          title: "Interactive KPI Cards",
+          desc: "Click on Occupancy, Check-ins, Revenue, or Pending Balances for detailed popup logs.",
+        },
+        {
+          iconBg: "bg-emerald-50",
+          iconColor: "text-emerald-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+          title: "Compact Revenue Tracking",
+          desc: "View daily, monthly, and seasonal earnings with formatted currency trends.",
+        },
+        {
+          iconBg: "bg-amber-50",
+          iconColor: "text-amber-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          ),
+          title: "Pending Payment Reports",
+          desc: "Easily identify outstanding balances and settled transactions.",
+        },
+        {
+          iconBg: "bg-purple-50",
+          iconColor: "text-purple-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          ),
+          title: "Occupancy Forecasting",
+          desc: "Track guest stay patterns to optimize pricing and maximize revenue.",
+        },
       ],
-      card2Title: "AI-Powered Weekly Insights",
-      card2Desc: "Receive a weekly summary of your team's villa operations progress and revenue consistency.",
-      card2Summary: "47 Tasks Completed",
-      card2Stat: "+12% vs last week",
     },
     {
-      id: "operations",
-      tabLabel: "Security & Operations",
-      heroTitle: "Housekeeping & Staff Control",
-      heroDesc: "Assign tasks to villa staff, set automated room inspection checklists, and restrict staff permissions securely.",
-      imageSrc: "/feature_insights.jpg",
-      weeklyGoalText: "Cleanliness Rating (9.9 of 10)",
-      weeklyGoalProgress: 99,
-      statBox1: { label: "Staff Active", value: "8 Members" },
-      statBox2: { label: "Avg Turnaround", value: "32 Mins" },
-      card1Title: "Staff Operations Progress",
-      card1Desc: "Monitor room cleaning status and inventory restocking across all property units.",
-      card1Total: "48 Rooms Cleaned",
-      card1Breakdown: [
-        { label: "Deep Clean", count: 18, color: "bg-emerald-500" },
-        { label: "Standard Inspection", count: 24, color: "bg-blue-500" },
-        { label: "Pending Restock", count: 6, color: "bg-amber-500" },
-      ],
-      card2Title: "Staff Efficiency Insights",
-      card2Desc: "Track staff response times and maintenance resolution speeds in real-time.",
-      card2Summary: "99.2% On-Time Completion",
-      card2Stat: "+8% efficiency gain",
-    },
-    {
-      id: "integrations",
-      tabLabel: "Multi-Channel Integrations",
-      heroTitle: "Instant 2-Way OTA Channel Synchronization",
-      heroDesc: "Automatically sync calendars, rates, and guest messaging with Airbnb, Booking.com, Vrbo, and your direct booking engine.",
+      id: "ota",
+      tabLabel: "Booking.com & OTA Integration",
+      headline: "Booking.com & Unified Channel Management",
+      description:
+        "Connect your villa listings across Booking.com, Airbnb, Agoda, and direct booking engines with automated 2-way calendar sync to eliminate double bookings.",
       imageSrc: "/feature_booking.jpg",
-      weeklyGoalText: "Channel Sync Rate (100%)",
-      weeklyGoalProgress: 100,
-      statBox1: { label: "Channels Connected", value: "4 Major OTAs" },
-      statBox2: { label: "Double Bookings", value: "0 Incidents" },
-      card1Title: "Channel Revenue Distribution",
-      card1Desc: "View direct bookings vs third-party OTA booking channel performance breakdown.",
-      card1Total: "LKR 2.4M Direct",
-      card1Breakdown: [
-        { label: "Direct Engine", count: 64, color: "bg-blue-600" },
-        { label: "Airbnb", count: 22, color: "bg-rose-500" },
-        { label: "Booking.com", count: 14, color: "bg-sky-500" },
+      keyFeatures: [
+        {
+          iconBg: "bg-blue-50",
+          iconColor: "text-blue-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          ),
+          title: "Centralized Rate Control",
+          desc: "Adjust room rates and minimum stay rules across channels from one screen.",
+        },
+        {
+          iconBg: "bg-cyan-50",
+          iconColor: "text-cyan-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          ),
+          title: "Booking.com Channel Sync",
+          desc: "Keep calendars instantly aligned across Booking.com, Airbnb, Agoda, and direct bookings.",
+        },
+        {
+          iconBg: "bg-purple-50",
+          iconColor: "text-purple-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+            </svg>
+          ),
+          title: "Single Portal Management",
+          desc: "View Booking.com and third-party reservations alongside your direct villa bookings.",
+        },
+        {
+          iconBg: "bg-amber-50",
+          iconColor: "text-amber-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+            </svg>
+          ),
+          title: "Seasonal Pricing Rules",
+          desc: "Update peak season and off-season pricing dynamically.",
+        },
       ],
-      card2Title: "Commission Savings Insights",
-      card2Desc: "Calculate total commission saved by driving direct guest bookings through InnHandler.",
-      card2Summary: "LKR 380,000 Saved",
-      card2Stat: "Zero OTA Commission",
     },
     {
       id: "crossplatform",
-      tabLabel: "Cross-Platform Mobile Access",
-      heroTitle: "Manage Properties Anywhere on Any Device",
-      heroDesc: "Full native mobile experience on iOS & Android. Receive push notifications for new guest reservations and urgent tasks.",
+      tabLabel: "Cross-Platform Access",
+      headline: "Manage Your Villas Anywhere, On Any Device",
+      description:
+        "Access your entire property management suite seamlessly on desktop, tablet, and mobile with a fast, responsive interface.",
       imageSrc: "/feature_insights.jpg",
-      weeklyGoalText: "Mobile Uptime (99.99%)",
-      weeklyGoalProgress: 100,
-      statBox1: { label: "Device Sync", value: "Instant" },
-      statBox2: { label: "Push Alerts", value: "Real-Time" },
-      card1Title: "Mobile Activity Log",
-      card1Desc: "Track manager check-ins and quick actions executed from mobile phones.",
-      card1Total: "142 Mobile Actions",
-      card1Breakdown: [
-        { label: "Guest Messaging", count: 72, color: "bg-purple-600" },
-        { label: "Payment Approval", count: 48, color: "bg-emerald-500" },
-        { label: "Price Adjustments", count: 22, color: "bg-blue-500" },
+      keyFeatures: [
+        {
+          iconBg: "bg-blue-50",
+          iconColor: "text-blue-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          ),
+          title: "PWA Home Screen App",
+          desc: "Install directly on iOS and Android devices for one-tap access.",
+        },
+        {
+          iconBg: "bg-emerald-50",
+          iconColor: "text-emerald-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          ),
+          title: "Adaptive Glassmorphic Interface",
+          desc: "Optimized for fast touch controls on mobile and full desktop displays.",
+        },
+        {
+          iconBg: "bg-amber-50",
+          iconColor: "text-amber-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+          ),
+          title: "Instant Toast Notifications",
+          desc: "Get immediate alerts for new bookings, check-ins, and payments.",
+        },
+        {
+          iconBg: "bg-rose-50",
+          iconColor: "text-rose-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          ),
+          title: "High-Speed Performance",
+          desc: "Lightweight, reliable operation even on mobile data connections.",
+        },
       ],
-      card2Title: "Remote Management Efficiency",
-      card2Desc: "Property managers save an average of 14 hours per week using mobile quick controls.",
-      card2Summary: "14 Hours Saved / Wk",
-      card2Stat: "Manage From Anywhere",
     },
   ];
 
-  const [activeTabId, setActiveTabId] = useState<string>("reporting");
-  const activeFeature = features.find((f) => f.id === activeTabId) || features[1];
+  const [activeTabId, setActiveTabId] = useState<string>("booking");
+  const activeSidebarFeature = sidebarFeatures.find((f) => f.id === activeTabId) || sidebarFeatures[0];
 
   return (
     <section id="features" className="py-16 sm:py-24 bg-slate-50 border-t border-slate-200/60">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Top Header Row matching reference image */}
+        {/* Top Header Row */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="space-y-2 max-w-xl">
-            <span className="text-xs uppercase tracking-widest font-semibold text-slate-400">
-              Advantage
+            <span className="text-xs uppercase tracking-wider font-semibold text-blue-600">
+              ALL IN ONE MANAGEMENT
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-              One Platform to Manage All Your Work
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-[1.15]">
+              One Platform to Manage Every Aspect
             </h2>
           </div>
           <p className="text-sm sm:text-base text-slate-600 max-w-md leading-relaxed font-normal">
-            Keep your team organized, aligned, and productive with one powerful workspace that boosts collaboration and efficiency across all your villa properties.
+            Inn Handler brings all your property operations together in one place so you can focus on delivering great guest experiences.
           </p>
         </div>
 
-        {/* 2-Column Main Layout: Left Vertical Sidebar & Right Feature Display */}
+        {/* SECTION 1: 3x2 Core Feature Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 sm:mb-24">
+          {coreFeatures.map((feature) => (
+            <div
+              key={feature.title}
+              className="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div className="space-y-4">
+                <div className={`w-12 h-12 rounded-2xl ${feature.iconBg} ${feature.iconColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-xs`}>
+                  {feature.icon}
+                </div>
+
+                <div className="space-y-1.5">
+                  <h3 className="text-base font-bold text-slate-950 group-hover:text-blue-600 transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed font-normal">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors group/link"
+                >
+                  <span>Learn more</span>
+                  <svg className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* SECTION 2: Interactive Vertical Sidebar & Detailed Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Vertical Sidebar Menu */}
-          <div className="lg:col-span-4 flex flex-col space-y-2 border-l border-slate-200/80 pl-2">
-            {features.map((feature) => {
+          <div className="lg:col-span-5 flex flex-col space-y-3">
+            {sidebarFeatures.map((feature) => {
               const isActive = feature.id === activeTabId;
               return (
                 <button
                   key={feature.id}
                   type="button"
                   onClick={() => setActiveTabId(feature.id)}
-                  className={`group relative flex items-center justify-between px-5 py-4 rounded-2xl text-left text-sm font-semibold transition-all duration-300 ${
+                  className={`group flex items-center justify-between px-6 py-4 rounded-2xl text-left text-sm sm:text-base font-bold transition-all duration-300 ${
                     isActive
-                      ? "bg-white text-slate-950 shadow-sm border border-slate-200/80"
-                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-100/60"
+                      ? "bg-white text-slate-950 shadow-md border border-slate-200/90 ring-1 ring-blue-500/10"
+                      : "bg-white/50 text-slate-600 hover:text-slate-950 hover:bg-white/80 border border-slate-200/50"
                   }`}
                 >
-                  <span className="leading-snug">{feature.tabLabel}</span>
+                  <span>{feature.tabLabel}</span>
 
-                  {/* Active Indicator Orange/Blue Circle Arrow Icon */}
-                  {isActive && (
-                    <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-600/30 animate-pulse-subtle">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </div>
-                  )}
+                  <div
+                    className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      isActive
+                        ? "bg-blue-600 text-white shadow-md shadow-blue-600/30 scale-105"
+                        : "bg-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600"
+                    }`}
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
                 </button>
               );
             })}
           </div>
 
-          {/* Right Feature Display Area (Animated transition on tab change) */}
-          <div className="lg:col-span-8 space-y-6">
-            {/* Top Large Feature Hero Card */}
+          {/* Right Feature Showcase Area */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Top Interactive Feature Container */}
             <div
-              key={activeFeature.id}
-              className="relative rounded-3xl overflow-hidden bg-slate-900 text-white shadow-2xl min-h-[360px] sm:min-h-[400px] flex flex-col justify-end p-6 sm:p-8 transition-all duration-500 transform-gpu animate-fadeIn"
+              key={activeSidebarFeature.id}
+              className="relative rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-200/90 p-4 sm:p-6 animate-tab-fade transform-gpu"
             >
-              {/* Background Feature Image */}
-              <Image
-                src={activeFeature.imageSrc}
-                alt={activeFeature.heroTitle}
-                fill
-                className="object-cover object-center opacity-70 transition-transform duration-700 hover:scale-105"
-              />
-              {/* Gradient Vignette Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+              {/* TAB 1: Villa Booking & Calendar */}
+              {activeSidebarFeature.id === "booking" && (
+                <div className="space-y-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-200/80">
+                    <div>
+                      <h3 className="text-base font-extrabold text-slate-950 leading-tight">Dashboard</h3>
+                      <p className="text-[10px] text-slate-500 font-medium">Monitoring 44 rooms and current occupancy.</p>
+                    </div>
 
-              {/* Overlaid Floating Widget Cards on top right */}
-              <div className="absolute top-4 sm:top-6 right-4 sm:right-6 max-w-xs space-y-2.5 z-20">
-                {/* Goal Widget Card */}
-                <div className="bg-white/90 backdrop-blur-md text-slate-900 p-3 rounded-2xl shadow-lg border border-white/40">
-                  <div className="flex items-center justify-between text-xs font-bold mb-1">
-                    <span>{activeFeature.weeklyGoalText}</span>
-                    <span className="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full text-[10px]">On Track</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-emerald-500 rounded-full transition-all duration-700"
-                      style={{ width: `${activeFeature.weeklyGoalProgress}%` }}
-                    />
-                  </div>
-                </div>
-
-                {/* 2 Stat Boxes */}
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="bg-white/90 backdrop-blur-md p-2.5 rounded-2xl shadow-lg border border-white/40 text-center">
-                    <div className="text-[10px] text-slate-500 font-bold uppercase">{activeFeature.statBox1.label}</div>
-                    <div className="text-xs sm:text-sm font-extrabold text-slate-900 mt-0.5">{activeFeature.statBox1.value}</div>
-                  </div>
-                  <div className="bg-white/90 backdrop-blur-md p-2.5 rounded-2xl shadow-lg border border-white/40 text-center">
-                    <div className="text-[10px] text-slate-500 font-bold uppercase">{activeFeature.statBox2.label}</div>
-                    <div className="text-xs sm:text-sm font-extrabold text-blue-600 mt-0.5">{activeFeature.statBox2.value}</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Left Hero Overlay Text */}
-              <div className="relative z-20 max-w-lg space-y-2">
-                <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug">
-                  {activeFeature.heroTitle}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
-                  {activeFeature.heroDesc}
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom 2 Grid Detail Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Card 1: Track Task Progress */}
-              <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
-                <div>
-                  <h4 className="text-base font-bold text-slate-900">{activeFeature.card1Title}</h4>
-                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">{activeFeature.card1Desc}</p>
-
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-extrabold text-slate-900">
-                    <span>Total Activity</span>
-                    <span className="text-blue-600">{activeFeature.card1Total}</span>
-                  </div>
-
-                  {/* Multi-color Progress Strip */}
-                  <div className="w-full h-2 rounded-full overflow-hidden flex gap-0.5 mt-2 bg-slate-100">
-                    {activeFeature.card1Breakdown.map((item) => (
-                      <div
-                        key={item.label}
-                        className={`h-full ${item.color}`}
-                        style={{ width: `${(item.count / 105) * 100}%` }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Breakdown List */}
-                  <div className="grid grid-cols-2 gap-2 mt-3 text-[11px] text-slate-600 font-medium">
-                    {activeFeature.card1Breakdown.map((item) => (
-                      <div key={item.label} className="flex items-center gap-1.5">
-                        <span className={`w-2 h-2 rounded-full ${item.color}`} />
-                        <span>{item.label}: <strong>{item.count}</strong></span>
+                    <div className="flex items-center gap-1.5">
+                      <div className="bg-slate-100 p-0.5 rounded-lg flex items-center text-[9px] font-bold">
+                        <span className="bg-white text-blue-600 px-2 py-0.5 rounded shadow-2xs">Calendar</span>
+                        <span className="text-slate-600 px-2 py-0.5">Timeline</span>
                       </div>
-                    ))}
+                      <span className="bg-amber-500 text-white px-2 py-0.5 rounded text-[9px] font-bold">✓ Availability</span>
+                      <span className="bg-blue-600 text-white px-2 py-0.5 rounded text-[9px] font-bold">+ Add Booking</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-200/60 text-center">
+                      <div className="text-[7px] text-slate-400 font-bold uppercase truncate">OCCUPANCY RATE</div>
+                      <div className="text-xs font-black text-slate-900 mt-0.5">78%</div>
+                      <div className="text-[6px] text-emerald-600 font-bold">↗ +8.2% vs yesterday</div>
+                    </div>
+
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-200/60 text-center">
+                      <div className="text-[7px] text-slate-400 font-bold uppercase truncate">CHECK-IN</div>
+                      <div className="text-xs font-black text-slate-900 mt-0.5">14</div>
+                      <div className="text-[6px] text-emerald-600 font-bold">↗ +3 from yesterday</div>
+                    </div>
+
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-200/60 text-center">
+                      <div className="text-[7px] text-slate-400 font-bold uppercase truncate">CHECK-OUT</div>
+                      <div className="text-xs font-black text-slate-900 mt-0.5">8</div>
+                      <div className="text-[6px] text-emerald-600 font-bold">↗ +2 from yesterday</div>
+                    </div>
+
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-200/60 text-center">
+                      <div className="text-[7px] text-slate-400 font-bold uppercase truncate">REVENUE</div>
+                      <div className="text-[9px] font-black text-slate-900 mt-0.5">Rs. 312,500</div>
+                      <div className="text-[6px] text-emerald-600 font-bold">↗ +18.4% vs last month</div>
+                    </div>
+
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-200/60 text-center">
+                      <div className="text-[7px] text-slate-400 font-bold uppercase truncate">PENDING</div>
+                      <div className="text-[9px] font-black text-slate-900 mt-0.5">Rs. 42,000</div>
+                      <div className="text-[6px] text-emerald-600 font-bold">↗ +12.0% vs last month</div>
+                    </div>
+
+                    <div className="bg-slate-50 p-1.5 rounded-xl border border-slate-200/60 text-center">
+                      <div className="text-[7px] text-slate-400 font-bold uppercase truncate">AVAILABLE</div>
+                      <div className="text-xs font-black text-slate-900 mt-0.5">36</div>
+                      <div className="text-[6px] text-emerald-600 font-bold">↗ +4 from yesterday</div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-2 pt-1">
+                    <div className="col-span-8 bg-slate-50 p-3 rounded-2xl border border-slate-200/80">
+                      <div className="flex items-center justify-between text-[10px] font-bold mb-1.5">
+                        <span className="text-slate-900">Booking Overview (May 2026)</span>
+                        <span className="text-blue-600">All Properties ▾</span>
+                      </div>
+                      <div className="grid grid-cols-7 gap-1 text-center text-[7px] font-bold text-slate-400 pb-1 border-b border-slate-200">
+                        <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+                      </div>
+
+                      {/* Relative Layer Container for Date Matrix & Overlay Booking Bars */}
+                      <div className="relative pt-2 pb-1">
+                        {/* BASE LAYER: Continuous 30 Sharp Black Date Grid (Dates under bookings have slightly reduced opacity) */}
+                        <div className="grid grid-cols-7 gap-x-1 gap-y-7 text-center font-black text-slate-900 text-[8.5px] z-10 relative">
+                          {/* Row 1 (Under Bookings 1 & 2 - Slightly reduced opacity for cleaner text contrast) */}
+                          <span className="bg-blue-50/90 text-blue-700 py-0.5 rounded opacity-75">1</span>
+                          <span className="py-0.5 opacity-75">2</span>
+                          <span className="py-0.5 opacity-75">3</span>
+                          <span className="py-0.5 opacity-75">4</span>
+                          <span className="py-0.5 opacity-75">5</span>
+                          <span className="py-0.5 opacity-75">6</span>
+                          <span className="py-0.5 opacity-75">7</span>
+                          {/* Row 2 (Dates 9-12 under Booking 3 have slightly reduced opacity) */}
+                          <span className="py-0.5">8</span>
+                          <span className="py-0.5 opacity-75">9</span>
+                          <span className="py-0.5 opacity-75">10</span>
+                          <span className="py-0.5 opacity-75">11</span>
+                          <span className="py-0.5 opacity-75">12</span>
+                          <span className="py-0.5">13</span>
+                          <span className="py-0.5">14</span>
+                          {/* Row 3 */}
+                          <span className="py-0.5">15</span>
+                          <span className="py-0.5">16</span>
+                          <span className="py-0.5">17</span>
+                          <span className="py-0.5">18</span>
+                          <span className="py-0.5">19</span>
+                          <span className="py-0.5">20</span>
+                          <span className="py-0.5">21</span>
+                          {/* Row 4 */}
+                          <span className="py-2">22</span>
+                          <span className="py-2">23</span>
+                          <span className="py-2">24</span>
+                          <span className="py-2">25</span>
+                          <span className="py-2">26</span>
+                          <span className="py-2">27</span>
+                          <span className="py-2">28</span>
+                          {/* Row 5 */}
+                          <span className="py-1">29</span>
+                          <span className="py-1">30</span>
+                          <span className="text-slate-300 py-1 font-normal">31</span>
+                        </div>
+
+                        {/* OVERLAY LAYER: Balanced sweet-spot vertical alignment */}
+                        <div className="absolute inset-0 pt-1 pointer-events-none z-20">
+                          {/* Row 1 Booking Bars */}
+                          <div className="grid grid-cols-7 gap-1 text-[6.5px] font-extrabold mt-0">
+                            <div className="col-start-1 col-span-3 bg-emerald-400/35 border border-emerald-500/70 text-emerald-950 rounded-md px-2 py-1 flex items-center truncate shadow-2xs">
+                              Alex Morgan - Rm 101
+                            </div>
+                            <div className="col-start-4 col-span-4 bg-amber-400/35 border border-amber-500/70 text-amber-950 rounded-md px-2 py-1 flex items-center truncate shadow-2xs">
+                              Sarah Jenkins - Rm 104
+                            </div>
+                          </div>
+
+                          {/* Row 2 Booking Bar (Balanced sweet spot offset: mt-[1.72rem]) */}
+                          <div className="grid grid-cols-7 gap-1 text-[6.5px] font-extrabold mt-[1.72rem]">
+                            <div className="col-start-2 col-span-4 bg-blue-400/35 border border-blue-500/70 text-blue-950 rounded-md px-2 py-1 flex items-center truncate shadow-2xs">
+                              David Miller - Rm 202
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="col-span-4 bg-slate-50 p-3 rounded-2xl border border-slate-200/80 flex flex-col justify-between text-[9px]">
+                      <div>
+                        <div className="font-bold text-slate-900 mb-1">Payment Summary</div>
+                        <div className="w-14 h-14 rounded-full border-4 border-emerald-500 border-t-amber-400 mx-auto flex items-center justify-center bg-white my-1 font-bold text-[7px]">
+                          82% Paid
+                        </div>
+                        <div className="space-y-1.5 text-[8px] font-bold mt-2">
+                          <div className="flex justify-between">
+                            <span className="text-emerald-600">● Total Paid</span>
+                            <span>Rs. 248,500</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-amber-500">● Pending</span>
+                            <span>Rs. 42,000</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
-              {/* Card 2: AI-Powered Weekly Insights */}
-              <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
-                <div>
-                  <h4 className="text-base font-bold text-slate-900">{activeFeature.card2Title}</h4>
-                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">{activeFeature.card2Desc}</p>
-
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span className="font-bold text-slate-900">{activeFeature.card2Summary}</span>
-                    <span className="text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full text-[10px]">
-                      ↗ {activeFeature.card2Stat}
+              {/* TAB 3: Reporting & Insights */}
+              {activeSidebarFeature.id === "reporting" && (
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-200/80">
+                    <div>
+                      <h3 className="text-base font-extrabold text-slate-950 leading-tight">Reports & Analytics</h3>
+                      <p className="text-[10px] text-slate-500 font-medium">Real-time revenue, performance flow, and payment breakdowns.</p>
+                    </div>
+                    <span className="bg-blue-50 text-blue-600 text-[10px] font-bold px-2.5 py-1 rounded-md border border-blue-100">
+                      Live Reports
                     </span>
                   </div>
 
-                  {/* Line Chart Visual Representation */}
-                  <div className="mt-4 h-24 w-full bg-slate-50/80 rounded-2xl p-2 border border-slate-100 flex items-end justify-between gap-1">
-                    {[35, 50, 42, 68, 85, 96, 70].map((val, idx) => (
-                      <div key={idx} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
-                        <div
-                          className="w-full bg-gradient-to-t from-blue-500 to-sky-400 rounded-t transition-all duration-500"
-                          style={{ height: `${val}%` }}
-                        />
-                        <span className="text-[8px] font-semibold text-slate-400">
-                          {["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"][idx]}
-                        </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-6 gap-2">
+                    {/* Card 1: Blue Theme */}
+                    <div className="bg-white p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between h-20">
+                      <div className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider truncate">
+                        GROSS REVENUE
                       </div>
-                    ))}
+                      <div className="text-xs font-black text-blue-600 mt-0.5 leading-none">
+                        Rs. 312.5k <span className="text-[7.5px] text-blue-600 font-semibold">+18%</span>
+                      </div>
+                      <div className="w-full h-1 bg-slate-100 rounded-full mt-2 overflow-hidden">
+                        <div className="h-full bg-blue-600 w-4/5" />
+                      </div>
+                    </div>
+
+                    {/* Card 2: Amber Theme */}
+                    <div className="bg-white p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between h-20">
+                      <div className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider truncate">
+                        PENDING PAYMENTS
+                      </div>
+                      <div className="text-xs font-black text-amber-500 mt-0.5 leading-none">
+                        Rs. 42.0k <span className="text-[7.5px] text-amber-600 font-semibold">+12%</span>
+                      </div>
+                      <div className="w-full h-1 bg-slate-100 rounded-full mt-2 overflow-hidden">
+                        <div className="h-full bg-amber-500 w-3/5" />
+                      </div>
+                    </div>
+
+                    {/* Card 3: Rose Theme */}
+                    <div className="bg-white p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between h-20">
+                      <div className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider truncate">
+                        REFUNDED PAYMENTS
+                      </div>
+                      <div className="text-xs font-black text-rose-500 mt-0.5 leading-none">
+                        Rs. 8.5k <span className="text-[7.5px] text-rose-500 font-semibold">-2%</span>
+                      </div>
+                      <div className="w-full h-1 bg-slate-100 rounded-full mt-2 overflow-hidden">
+                        <div className="h-full bg-rose-500 w-1/4" />
+                      </div>
+                    </div>
+
+                    {/* Card 4: Indigo Theme */}
+                    <div className="bg-white p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between h-20">
+                      <div className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider truncate">
+                        TOTAL DISCOUNTS
+                      </div>
+                      <div className="text-xs font-black text-indigo-600 mt-0.5 leading-none">
+                        Rs. 12.0k <span className="text-[7.5px] text-indigo-600 font-semibold">+5%</span>
+                      </div>
+                      <div className="w-full h-1 bg-slate-100 rounded-full mt-2 overflow-hidden">
+                        <div className="h-full bg-indigo-600 w-1/3" />
+                      </div>
+                    </div>
+
+                    {/* Card 5: Emerald Theme */}
+                    <div className="bg-white p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between h-20">
+                      <div className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider truncate">
+                        CURRENT OCCUPANCY
+                      </div>
+                      <div className="text-xs font-black text-emerald-600 mt-0.5 leading-none">
+                        78% <span className="text-[7.5px] text-emerald-600 font-semibold">+8%</span>
+                      </div>
+                      <div className="w-full h-1 bg-slate-100 rounded-full mt-2 overflow-hidden">
+                        <div className="h-full bg-emerald-600 w-4/5" />
+                      </div>
+                    </div>
+
+                    {/* Card 6: Violet Theme */}
+                    <div className="bg-white p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between h-20">
+                      <div className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider truncate">
+                        NET PROFIT
+                      </div>
+                      <div className="text-xs font-black text-violet-600 mt-0.5 leading-none">
+                        Rs. 250.0k <span className="text-[7.5px] text-violet-600 font-semibold">+15%</span>
+                      </div>
+                      <div className="w-full h-1 bg-slate-100 rounded-full mt-2 overflow-hidden">
+                        <div className="h-full bg-violet-600 w-4/5" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-12 gap-2 pt-1">
+                    <div className="col-span-7 bg-white p-3 rounded-2xl border border-slate-200/80 shadow-2xs">
+                      <div className="flex items-center justify-between text-[10px] font-bold mb-2">
+                        <span className="text-slate-900">Performance Flow</span>
+                        <span className="text-emerald-600 text-[8px] font-semibold bg-emerald-50 px-2 py-0.5 rounded">↑ +18.4% Growth</span>
+                      </div>
+                      <div className="h-28 w-full bg-slate-50/60 rounded-xl p-2 border border-slate-100 flex items-end justify-between gap-1 relative">
+                        <svg className="absolute inset-0 w-full h-full p-2" viewBox="0 0 200 80" preserveAspectRatio="none">
+                          <path d="M0 60 Q 30 50, 60 30 T 120 40 T 180 15 L 200 10" fill="none" stroke="#2563EB" strokeWidth="3" strokeLinecap="round" />
+                          <path d="M0 60 Q 30 50, 60 30 T 120 40 T 180 15 L 200 10 L 200 80 L 0 80 Z" fill="url(#blueGradient)" opacity="0.15" />
+                          <defs>
+                            <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#2563EB" />
+                              <stop offset="100%" stopColor="#2563EB" stopOpacity="0" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+
+                        <div className="absolute bottom-1 left-2 right-2 flex justify-between text-[7px] font-bold text-slate-400">
+                          <span>JAN</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>NOV</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="col-span-5 bg-white p-3 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between text-[9px]">
+                      <div>
+                        <div className="font-bold text-slate-900 mb-1 text-[10px]">Total & Pending Payments</div>
+
+                        <div className="w-14 h-14 rounded-full border-4 border-emerald-500 border-t-amber-400 mx-auto flex items-center justify-center bg-slate-50 my-1 font-bold text-[7px]">
+                          82% Paid
+                        </div>
+
+                        <div className="space-y-1.5 text-[8px] font-bold mt-2">
+                          <div className="flex justify-between">
+                            <span className="text-emerald-600">● Total Paid</span>
+                            <span>Rs. 248,500</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-amber-500">● Pending</span>
+                            <span>Rs. 42,000</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {/* Standard Image Presentation for other tabs (housekeeping, ota, crossplatform) */}
+              {activeSidebarFeature.id !== "booking" && activeSidebarFeature.id !== "reporting" && (
+                <div className="relative h-[240px] sm:h-[280px] rounded-2xl overflow-hidden">
+                  <Image
+                    src={activeSidebarFeature.imageSrc}
+                    alt={activeSidebarFeature.headline}
+                    fill
+                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-slate-950/20" />
+
+                  <div className="relative z-20 bg-white/85 backdrop-blur-md border border-white/60 p-4 sm:p-5 rounded-2xl shadow-xl max-w-lg mt-auto">
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 block mb-0.5">
+                      Specification Details
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-extrabold text-slate-950 leading-tight">
+                      {activeSidebarFeature.headline}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-medium mt-1">
+                      {activeSidebarFeature.description}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Bottom 4 Key Feature Bullet Cards (2x2 Grid) with Soft Rounded Icon Boxes matching Image 1 */}
+            <div key={`${activeSidebarFeature.id}-features`} className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-tab-fade transform-gpu">
+              {activeSidebarFeature.keyFeatures.map((item) => (
+                <div
+                  key={item.title}
+                  className="bg-white/85 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      {/* Soft Rounded Icon Box matching reference image 1 */}
+                      <div className={`w-10 h-10 rounded-xl ${item.iconBg} ${item.iconColor} flex items-center justify-center shadow-2xs`}>
+                        {item.icon}
+                      </div>
+                      <h4 className="text-xs sm:text-sm font-bold text-slate-950">
+                        {item.title}
+                      </h4>
+                    </div>
+                    <p className="text-xs text-slate-500 leading-relaxed font-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
