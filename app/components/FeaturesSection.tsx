@@ -157,57 +157,165 @@ export default function FeaturesSection() {
       ],
     },
     {
-      id: "housekeeping",
-      tabLabel: "Housekeeping & Operations",
-      headline: "Task Tracking & Daily Villa Operations",
+      id: "payments",
+      tabLabel: "Payments & Invoice Generation",
+      headline: "Automated Invoicing & Instant Payment Receipts",
       description:
-        "Assign housekeeping duties, track maintenance requests, and monitor daily villa operations visually with real-time status updates.",
+        "Generate branded, itemized guest invoices with automatic room charges, spa services, dining, and multi-channel payment transaction tracking.",
       imageSrc: "/feature_insights.jpg",
       keyFeatures: [
         {
-          iconBg: "bg-cyan-50",
-          iconColor: "text-cyan-600",
+          iconBg: "bg-purple-50",
+          iconColor: "text-purple-600",
           icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
           ),
-          title: "Room Status Tracking",
-          desc: "Real-time indicators for Clean, Dirty, In-Progress, and Inspected rooms.",
-        },
-        {
-          iconBg: "bg-blue-50",
-          iconColor: "text-blue-600",
-          icon: (
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-            </svg>
-          ),
-          title: "Staff Task Assignment",
-          desc: "Assign housekeeping and maintenance duties to team members effortlessly.",
-        },
-        {
-          iconBg: "bg-orange-50",
-          iconColor: "text-orange-600",
-          icon: (
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          ),
-          title: "Work Order Management",
-          desc: "Log maintenance issues and track resolution progress.",
+          title: "Instant PDF Invoices",
+          desc: "Auto-generate branded, single-page guest receipts and itemized folios upon confirmation.",
         },
         {
           iconBg: "bg-emerald-50",
           iconColor: "text-emerald-600",
           icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           ),
-          title: "Operational Checklists",
-          desc: "Ensure high standards and guest satisfaction before every check-in.",
+          title: "Multi-Payment Split & Logs",
+          desc: "Accept cash, bank transfers, credit cards, and deposits with full audit timestamps.",
+        },
+        {
+          iconBg: "bg-blue-50",
+          iconColor: "text-blue-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          ),
+          title: "Itemized Billing Folios",
+          desc: "Seamlessly bundle room stays, spa treatments, food, and airport transfers into one bill.",
+        },
+        {
+          iconBg: "bg-amber-50",
+          iconColor: "text-amber-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+          title: "Live Settlement Status",
+          desc: "Real-time indicators for Paid in Full, Pending, and Partial balances to prevent leakage.",
+        },
+      ],
+    },
+    {
+      id: "staffpayments",
+      tabLabel: "Staff Payments & Payroll",
+      headline: "Staff Salary Sheets, Overtime & Payout Reports",
+      description:
+        "Generate automated monthly staff payment reports, track base salaries, overtime allowances, service charge shares, and manage payout statuses seamlessly.",
+      imageSrc: "/feature_insights.jpg",
+      keyFeatures: [
+        {
+          iconBg: "bg-emerald-50",
+          iconColor: "text-emerald-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          ),
+          title: "Monthly Staff Salary Reports",
+          desc: "Generate itemized payroll sheets, overtime logs, and single-click downloadable PDF payslips.",
+        },
+        {
+          iconBg: "bg-blue-50",
+          iconColor: "text-blue-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+          title: "Allowances & Overtime Calculator",
+          desc: "Automatically calculate overtime hours, tip pools, and service charge distributions.",
+        },
+        {
+          iconBg: "bg-amber-50",
+          iconColor: "text-amber-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
+            </svg>
+          ),
+          title: "Advance & Deduction Ledger",
+          desc: "Track salary advances, loans, and statutory deductions with clear receipts and balances.",
+        },
+        {
+          iconBg: "bg-purple-50",
+          iconColor: "text-purple-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+          title: "Real-Time Payout Status",
+          desc: "Instant live indicators for Paid in Full, Pending, and Partial salary disbursements.",
+        },
+      ],
+    },
+    {
+      id: "statustracking",
+      tabLabel: "Room, Maintenance & Payment Status",
+      headline: "Real-Time Room Status, Maintenance & Payments",
+      description:
+        "Monitor live room availability, housekeeping turnovers, maintenance repairs, and guest payment statuses across your properties in real-time.",
+      imageSrc: "/feature_insights.jpg",
+      keyFeatures: [
+        {
+          iconBg: "bg-emerald-50",
+          iconColor: "text-emerald-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+          title: "Live Room & Housekeeping Status",
+          desc: "Real-time indicators for Vacant Ready, Occupied, Cleaning, and Inspected rooms.",
+        },
+        {
+          iconBg: "bg-blue-50",
+          iconColor: "text-blue-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+          title: "Guest Folio Payment Status",
+          desc: "Live visibility of Paid in Full, Advance Collected, and Pending Balances per room.",
+        },
+        {
+          iconBg: "bg-amber-50",
+          iconColor: "text-amber-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          ),
+          title: "Maintenance Work Orders",
+          desc: "Track plumbing, AC, and deep cleaning repairs with instant resolution status logs.",
+        },
+        {
+          iconBg: "bg-purple-50",
+          iconColor: "text-purple-600",
+          icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+          ),
+          title: "Instant Room Lock & Release",
+          desc: "Lock rooms for maintenance or release them immediately once inspected.",
         },
       ],
     },
@@ -628,7 +736,515 @@ export default function FeaturesSection() {
                 </div>
               )}
 
-              {/* TAB 3: Reporting & Insights */}
+              {/* TAB 2: Payments & Invoice Generation */}
+              {activeSidebarFeature.id === "payments" && (
+                <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs text-xs space-y-4 font-sans select-none">
+                  
+                  {/* Invoice Header */}
+                  <div className="flex flex-wrap items-start justify-between gap-3 pb-3 border-b border-slate-200/80">
+                    <div>
+                      <h3 className="text-base sm:text-lg font-black tracking-tight text-slate-950">
+                        VILLA SERENITY PALACE
+                      </h3>
+                      <p className="text-[10px] text-slate-500 mt-0.5">
+                        68/17, Beach Road, Mirissa, Sri Lanka
+                      </p>
+                      <p className="text-[10px] text-slate-500">
+                        Contact: +94 77 123 4567
+                      </p>
+                    </div>
+
+                    <div className="text-right">
+                      <div className="text-sm sm:text-base font-black tracking-wider text-slate-950">
+                        INVOICE
+                      </div>
+                      <div className="text-[11px] font-bold text-slate-700 mt-0.5">
+                        Booking #0034
+                      </div>
+                      <span className="inline-block mt-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-extrabold px-2 py-0.5 rounded">
+                        PAID
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* 2-Column Guest & Reservation Info */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Guest Profile */}
+                    <div className="space-y-1 bg-slate-50/70 p-2.5 rounded-xl border border-slate-100">
+                      <div className="text-[8px] font-bold tracking-wider uppercase text-slate-400">
+                        GUEST PROFILE
+                      </div>
+                      <div className="text-xs sm:text-sm font-black text-slate-950">
+                        Sunil Perera
+                      </div>
+                      <div className="text-[10px] text-slate-600 space-y-0.5 pt-0.5">
+                        <p><span className="text-slate-400">NIC/Passport:</span> 942381024V</p>
+                        <p><span className="text-slate-400">Origin:</span> Sri Lanka</p>
+                        <p><span className="text-slate-400">Address:</span> 68/17, Isuru Mw, Yakkala</p>
+                        <p><span className="text-slate-400">Occupancy:</span> 2 Adults, 1 Child</p>
+                      </div>
+                    </div>
+
+                    {/* Reservation Details */}
+                    <div className="space-y-1 bg-slate-50/70 p-2.5 rounded-xl border border-slate-100">
+                      <div className="text-[8px] font-bold tracking-wider uppercase text-slate-400">
+                        RESERVATION DETAILS
+                      </div>
+                      <div className="text-xs sm:text-sm font-black text-slate-950">
+                        Room 101
+                      </div>
+                      <div className="text-[9px] font-bold text-slate-500 uppercase">
+                        COUPLE ROOM (AC)
+                      </div>
+                      <div className="text-[10px] text-slate-700 space-y-0.5 pt-0.5">
+                        <p>Check-in: 2026-06-02 <span className="font-bold text-blue-600">at 2:00 PM</span></p>
+                        <p>Check-out: 2026-06-03 <span className="font-bold text-amber-600">at 11:00 AM</span></p>
+                        <p className="font-bold text-slate-900 pt-0.5">Length of Stay: 1 Night</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Cost Breakdown Table */}
+                  <div className="space-y-1.5">
+                    <div className="text-[8px] font-bold tracking-wider uppercase text-slate-400">
+                      COST BREAKDOWN
+                    </div>
+                    <div className="border border-slate-200/80 rounded-xl overflow-hidden shadow-2xs">
+                      <table className="w-full text-left text-[9.5px]">
+                        <thead className="bg-slate-50 text-slate-500 border-b border-slate-200/80 font-bold uppercase text-[7.5px]">
+                          <tr>
+                            <th className="py-1.5 px-2.5">Item Description</th>
+                            <th className="py-1.5 px-2 text-right">Rate</th>
+                            <th className="py-1.5 px-2 text-center">Qty/Nights</th>
+                            <th className="py-1.5 px-2.5 text-right">Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-1.5 px-2.5 font-medium text-slate-800">
+                              Room Stay Charge (Room 101 - Couple Room AC)
+                            </td>
+                            <td className="py-1.5 px-2 text-right text-slate-600">Rs. 25,000.00</td>
+                            <td className="py-1.5 px-2 text-center text-slate-600">1</td>
+                            <td className="py-1.5 px-2.5 text-right font-bold text-slate-900">Rs. 25,000.00</td>
+                          </tr>
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-1.5 px-2.5 font-medium text-slate-800">
+                              Ayurveda Spa Package (2026-06-29)
+                            </td>
+                            <td className="py-1.5 px-2 text-right text-slate-600">Rs. 12,000.00</td>
+                            <td className="py-1.5 px-2 text-center text-slate-600">1</td>
+                            <td className="py-1.5 px-2.5 text-right font-bold text-slate-900">Rs. 12,000.00</td>
+                          </tr>
+                          <tr className="bg-slate-50/70 font-bold border-t border-slate-200">
+                            <td colSpan={3} className="py-1.5 px-2.5 text-right uppercase text-[8px] text-slate-500">
+                              TOTAL
+                            </td>
+                            <td className="py-1.5 px-2.5 text-right font-black text-slate-950">
+                              Rs. 37,000.00
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Payment Transaction Log Table */}
+                  <div className="space-y-1.5">
+                    <div className="text-[8px] font-bold tracking-wider uppercase text-slate-400">
+                      PAYMENT TRANSACTION LOG
+                    </div>
+                    <div className="border border-slate-200/80 rounded-xl overflow-hidden shadow-2xs">
+                      <table className="w-full text-left text-[9.5px]">
+                        <thead className="bg-slate-50 text-slate-500 border-b border-slate-200/80 font-bold uppercase text-[7.5px]">
+                          <tr>
+                            <th className="py-1.5 px-2.5">Payment Method</th>
+                            <th className="py-1.5 px-2">Date</th>
+                            <th className="py-1.5 px-2 text-center">Status</th>
+                            <th className="py-1.5 px-2.5 text-right">Amount Received</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-1.5 px-2.5 font-bold text-slate-900 flex items-center gap-1.5">
+                              <span>CASH</span>
+                              <span className="bg-slate-100 text-slate-600 text-[7px] font-bold px-1.5 py-0.5 rounded">
+                                ADVANCE
+                              </span>
+                            </td>
+                            <td className="py-1.5 px-2 text-slate-600">2026-06-29</td>
+                            <td className="py-1.5 px-2 text-center">
+                              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] font-bold px-1.5 py-0.5 rounded">
+                                PAID
+                              </span>
+                            </td>
+                            <td className="py-1.5 px-2.5 text-right font-bold text-emerald-600">
+                              + Rs. 12,000.00
+                            </td>
+                          </tr>
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-1.5 px-2.5 font-bold text-slate-900 flex items-center gap-1.5">
+                              <span>CASH</span>
+                              <span className="bg-slate-100 text-slate-600 text-[7px] font-bold px-1.5 py-0.5 rounded">
+                                SETTLEMENT
+                              </span>
+                            </td>
+                            <td className="py-1.5 px-2 text-slate-600">2026-06-29</td>
+                            <td className="py-1.5 px-2 text-center">
+                              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] font-bold px-1.5 py-0.5 rounded">
+                                PAID
+                              </span>
+                            </td>
+                            <td className="py-1.5 px-2.5 text-right font-bold text-emerald-600">
+                              + Rs. 25,000.00
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Grand Total & Status Bar */}
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-100">
+                    <div className="text-[10px] font-medium text-slate-500">
+                      Generated automatically by <strong className="text-blue-600 font-bold">InnHandler</strong>
+                    </div>
+                    <div className="text-right space-y-1">
+                      <div className="flex items-baseline justify-end gap-2">
+                        <span className="text-[8px] uppercase tracking-wider font-bold text-slate-400">
+                          GRAND TOTAL
+                        </span>
+                        <span className="text-sm sm:text-base font-black text-slate-950">
+                          Rs. 37,000.00
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-end gap-1.5">
+                        <span className="text-[8px] uppercase tracking-wider font-bold text-slate-400">
+                          PAYMENT STATUS
+                        </span>
+                        <span className="bg-emerald-600 text-white font-bold text-[8.5px] px-2 py-0.5 rounded-full shadow-2xs">
+                          ✓ PAID IN FULL
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              )}
+
+              {/* TAB 3: Staff Payments & Payroll */}
+              {activeSidebarFeature.id === "staffpayments" && (
+                <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs space-y-4 font-sans select-none text-slate-900">
+                  
+                  {/* Top Header */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">
+                        Staff Payroll &amp; Disbursements
+                      </span>
+                      <h3 className="text-base sm:text-lg font-extrabold text-slate-950 mt-0.5">
+                        Staff Payment Reports &amp; Salary Sheets
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="bg-blue-50 text-blue-700 border border-blue-100 text-[9px] font-bold px-2.5 py-1 rounded-full">
+                        May 2026 Payroll
+                      </span>
+                      <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-bold px-2.5 py-1 rounded-full">
+                        92% Disbursed
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* 4 KPI Summary Cards */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70 shadow-2xs">
+                      <span className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider block">TOTAL PAYROLL</span>
+                      <div className="text-xs sm:text-sm font-black text-slate-950 mt-0.5">Rs. 485,000</div>
+                      <span className="text-[7px] text-slate-500 font-medium">12 Staff Members</span>
+                    </div>
+
+                    <div className="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70 shadow-2xs">
+                      <span className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider block">TOTAL DISBURSED</span>
+                      <div className="text-xs sm:text-sm font-black text-emerald-600 mt-0.5">Rs. 420,000</div>
+                      <span className="text-[7px] text-emerald-600 font-bold">✓ 10 Settled</span>
+                    </div>
+
+                    <div className="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70 shadow-2xs">
+                      <span className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider block">PENDING PAYOUTS</span>
+                      <div className="text-xs sm:text-sm font-black text-amber-600 mt-0.5">Rs. 65,000</div>
+                      <span className="text-[7px] text-amber-600 font-bold">● 2 Processing</span>
+                    </div>
+
+                    <div className="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70 shadow-2xs">
+                      <span className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider block">ALLOWANCES / OT</span>
+                      <div className="text-xs sm:text-sm font-black text-blue-600 mt-0.5">Rs. 50,000</div>
+                      <span className="text-[7px] text-blue-600 font-bold">Service Share Incl.</span>
+                    </div>
+                  </div>
+
+                  {/* Staff Payment Reports Table */}
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[8px] font-bold tracking-wider uppercase text-slate-400">
+                        MONTHLY STAFF SALARY &amp; PAYOUT BREAKDOWN
+                      </span>
+                      <span className="text-[8px] font-bold text-blue-600">Download Excel / CSV ▾</span>
+                    </div>
+
+                    <div className="border border-slate-200/80 rounded-xl overflow-hidden shadow-2xs">
+                      <table className="w-full text-left text-[9.5px]">
+                        <thead className="bg-slate-50 text-slate-500 border-b border-slate-200/80 font-bold uppercase text-[7.5px]">
+                          <tr>
+                            <th className="py-2 px-2.5">Staff &amp; Role</th>
+                            <th className="py-2 px-2 text-right">Base Salary</th>
+                            <th className="py-2 px-2 text-right">Allowances/OT</th>
+                            <th className="py-2 px-2 text-right">Deductions</th>
+                            <th className="py-2 px-2 text-right">Net Payout</th>
+                            <th className="py-2 px-2.5 text-center">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 bg-white">
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-2 px-2.5">
+                              <div className="font-bold text-slate-950">Kamal Silva</div>
+                              <div className="text-[7.5px] text-slate-500 font-medium">Head Chef • Kitchen</div>
+                            </td>
+                            <td className="py-2 px-2 text-right text-slate-600 font-medium">Rs. 70,000.00</td>
+                            <td className="py-2 px-2 text-right text-emerald-600 font-bold">+Rs. 15,000.00</td>
+                            <td className="py-2 px-2 text-right text-slate-400">Rs. 0.00</td>
+                            <td className="py-2 px-2 text-right font-black text-slate-950">Rs. 85,000.00</td>
+                            <td className="py-2 px-2.5 text-center">
+                              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] font-bold px-2 py-0.5 rounded">
+                                ✓ PAID
+                              </span>
+                            </td>
+                          </tr>
+
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-2 px-2.5">
+                              <div className="font-bold text-slate-950">Nimal Fernando</div>
+                              <div className="text-[7.5px] text-slate-500 font-medium">Lead Housekeeper</div>
+                            </td>
+                            <td className="py-2 px-2 text-right text-slate-600 font-medium">Rs. 55,000.00</td>
+                            <td className="py-2 px-2 text-right text-emerald-600 font-bold">+Rs. 10,000.00</td>
+                            <td className="py-2 px-2 text-right text-slate-400">Rs. 0.00</td>
+                            <td className="py-2 px-2 text-right font-black text-slate-950">Rs. 65,000.00</td>
+                            <td className="py-2 px-2.5 text-center">
+                              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] font-bold px-2 py-0.5 rounded">
+                                ✓ PAID
+                              </span>
+                            </td>
+                          </tr>
+
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-2 px-2.5">
+                              <div className="font-bold text-slate-950">Ruwan Perera</div>
+                              <div className="text-[7.5px] text-slate-500 font-medium">Villa Chauffeur</div>
+                            </td>
+                            <td className="py-2 px-2 text-right text-slate-600 font-medium">Rs. 45,000.00</td>
+                            <td className="py-2 px-2 text-right text-emerald-600 font-bold">+Rs. 15,000.00</td>
+                            <td className="py-2 px-2 text-right text-rose-500 font-bold">-Rs. 5,000.00</td>
+                            <td className="py-2 px-2 text-right font-black text-slate-950">Rs. 55,000.00</td>
+                            <td className="py-2 px-2.5 text-center">
+                              <span className="bg-amber-50 text-amber-700 border border-amber-200 text-[8px] font-bold px-2 py-0.5 rounded">
+                                PENDING
+                              </span>
+                            </td>
+                          </tr>
+
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-2 px-2.5">
+                              <div className="font-bold text-slate-950">Priyani Jayasuriya</div>
+                              <div className="text-[7.5px] text-slate-500 font-medium">Front Desk Specialist</div>
+                            </td>
+                            <td className="py-2 px-2 text-right text-slate-600 font-medium">Rs. 50,000.00</td>
+                            <td className="py-2 px-2 text-right text-emerald-600 font-bold">+Rs. 10,000.00</td>
+                            <td className="py-2 px-2 text-right text-slate-400">Rs. 0.00</td>
+                            <td className="py-2 px-2 text-right font-black text-slate-950">Rs. 60,000.00</td>
+                            <td className="py-2 px-2.5 text-center">
+                              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] font-bold px-2 py-0.5 rounded">
+                                ✓ PAID
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Bottom Action Footer */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-[10px]">
+                    <div className="text-slate-500 font-medium">
+                      Net Payroll: <strong className="text-slate-950 font-bold">Rs. 485,000.00</strong> (Disbursed: <strong className="text-emerald-600 font-bold">Rs. 420,000.00</strong>)
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-[9px] font-bold px-3 py-1 rounded-lg transition-colors cursor-pointer">
+                        Export Payslips (PDF)
+                      </span>
+                      <span className="bg-blue-600 hover:bg-blue-700 text-white text-[9px] font-bold px-3 py-1 rounded-lg shadow-2xs transition-colors cursor-pointer">
+                        + Process Payouts
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              )}
+
+              {/* TAB 4: Real-Time Room, Maintenance & Payment Status */}
+              {activeSidebarFeature.id === "statustracking" && (
+                <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs space-y-4 font-sans select-none text-slate-900">
+                  
+                  {/* Top Header */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">
+                        Live Property Monitoring
+                      </span>
+                      <h3 className="text-base sm:text-lg font-extrabold text-slate-950 mt-0.5">
+                        Real-Time Room Status, Maintenance &amp; Payments
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        84% Occupancy
+                      </span>
+                      <span className="bg-blue-50 text-blue-700 border border-blue-100 text-[9px] font-bold px-2.5 py-1 rounded-full">
+                        44 Total Rooms
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* 4 KPI Summary Cards */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70 shadow-2xs">
+                      <span className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider block">AVAILABLE READY</span>
+                      <div className="text-xs sm:text-sm font-black text-emerald-600 mt-0.5">11 Rooms</div>
+                      <span className="text-[7px] text-emerald-600 font-bold">● Clean &amp; Inspected</span>
+                    </div>
+
+                    <div className="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70 shadow-2xs">
+                      <span className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider block">OCCUPIED</span>
+                      <div className="text-xs sm:text-sm font-black text-blue-600 mt-0.5">2 Rooms</div>
+                      <span className="text-[7px] text-blue-600 font-bold">● Active Guest Stays</span>
+                    </div>
+
+                    <div className="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70 shadow-2xs">
+                      <span className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider block">CLEANING</span>
+                      <div className="text-xs sm:text-sm font-black text-amber-600 mt-0.5">1 Room</div>
+                      <span className="text-[7px] text-amber-600 font-bold">🔄 Linen Turnaround</span>
+                    </div>
+
+                    <div className="bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70 shadow-2xs">
+                      <span className="text-[7.5px] text-slate-400 font-bold uppercase tracking-wider block">MAINTENANCE</span>
+                      <div className="text-xs sm:text-sm font-black text-rose-600 mt-0.5">1 Room</div>
+                      <span className="text-[7px] text-rose-600 font-bold">⛔ Scheduled Service</span>
+                    </div>
+                  </div>
+
+                  {/* Real-Time Room & Maintenance Status Table */}
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[8px] font-bold tracking-wider uppercase text-slate-400">
+                        LIVE ROOM STATUS &amp; MAINTENANCE REASON LOG
+                      </span>
+                      <span className="text-[8px] font-bold text-blue-600">All Wings ▾</span>
+                    </div>
+
+                    <div className="border border-slate-200/80 rounded-xl overflow-hidden shadow-2xs">
+                      <table className="w-full text-left text-[9.5px]">
+                        <thead className="bg-slate-50 text-slate-500 border-b border-slate-200/80 font-bold uppercase text-[7.5px]">
+                          <tr>
+                            <th className="py-2.5 px-3 w-1/4">Room Number</th>
+                            <th className="py-2.5 px-3 w-1/4">Current Status</th>
+                            <th className="py-2.5 px-3 w-1/2">Reason / Maintenance Details</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 bg-white">
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-2.5 px-3">
+                              <div className="font-bold text-slate-950">Room 101</div>
+                              <div className="text-[7.5px] text-slate-500 font-medium">Ground Floor Deluxe</div>
+                            </td>
+                            <td className="py-2.5 px-3">
+                              <span className="bg-blue-50 text-blue-700 border border-blue-200 text-[8px] font-bold px-2.5 py-0.5 rounded whitespace-nowrap inline-block">
+                                ● OCCUPIED
+                              </span>
+                            </td>
+                            <td className="py-2.5 px-3 text-slate-700 font-medium">
+                              Guest in-house (3 Nights) • Routine pre-arrival inspection passed
+                            </td>
+                          </tr>
+
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-2.5 px-3">
+                              <div className="font-bold text-slate-950">Room 102</div>
+                              <div className="text-[7.5px] text-slate-500 font-medium">Deluxe Ocean View</div>
+                            </td>
+                            <td className="py-2.5 px-3">
+                              <span className="bg-amber-50 text-amber-700 border border-amber-200 text-[8px] font-bold px-2.5 py-0.5 rounded whitespace-nowrap inline-block">
+                                🔄 CLEANING
+                              </span>
+                            </td>
+                            <td className="py-2.5 px-3 text-slate-700 font-medium">
+                              Guest checked out (11:00 AM) • Deep cleaning &amp; linen change in progress
+                            </td>
+                          </tr>
+
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-2.5 px-3">
+                              <div className="font-bold text-slate-950">Room 104</div>
+                              <div className="text-[7.5px] text-slate-500 font-medium">Executive Suite</div>
+                            </td>
+                            <td className="py-2.5 px-3">
+                              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] font-bold px-2.5 py-0.5 rounded whitespace-nowrap inline-block">
+                                ✓ AVAILABLE
+                              </span>
+                            </td>
+                            <td className="py-2.5 px-3 text-slate-700 font-medium">
+                              Ready for check-in • AC servicing &amp; filter replacement completed
+                            </td>
+                          </tr>
+
+                          <tr className="hover:bg-slate-50/50">
+                            <td className="py-2.5 px-3">
+                              <div className="font-bold text-slate-950">Room 105</div>
+                              <div className="text-[7.5px] text-slate-500 font-medium">Garden Pavilion</div>
+                            </td>
+                            <td className="py-2.5 px-3">
+                              <span className="bg-rose-50 text-rose-700 border border-rose-200 text-[8px] font-bold px-2.5 py-0.5 rounded whitespace-nowrap inline-block">
+                                ⛔ MAINTENANCE
+                              </span>
+                            </td>
+                            <td className="py-2.5 px-3 text-rose-700 font-medium">
+                              Room blocked • Plumbing valve repair &amp; leak fix in progress
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Bottom Action Footer */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 text-[10px]">
+                    <div className="text-slate-500 font-medium">
+                      Status Summary: <strong className="text-emerald-700 font-bold">11 Ready</strong> • <strong className="text-amber-700 font-bold">1 Cleaning</strong> • <strong className="text-rose-700 font-bold">1 Blocked</strong> • <strong className="text-blue-700 font-bold">1 Occupied</strong>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-[9px] font-bold px-3 py-1 rounded-lg transition-colors cursor-pointer">
+                        Filter by Status ▾
+                      </span>
+                      <span className="bg-blue-600 hover:bg-blue-700 text-white text-[9px] font-bold px-3 py-1 rounded-lg shadow-2xs transition-colors cursor-pointer">
+                        + Block Room
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              )}
+
+              {/* TAB 4: Reporting & Insights */}
               {activeSidebarFeature.id === "reporting" && (
                 <div className="space-y-3">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200/80">
@@ -769,28 +1385,180 @@ export default function FeaturesSection() {
                 </div>
               )}
 
-              {/* Standard Image Presentation for other tabs (housekeeping, ota, crossplatform) */}
-              {activeSidebarFeature.id !== "booking" && activeSidebarFeature.id !== "reporting" && (
-                <div className="relative h-[240px] sm:h-[280px] rounded-2xl overflow-hidden">
-                  <Image
-                    src={activeSidebarFeature.imageSrc}
-                    alt={activeSidebarFeature.headline}
-                    fill
-                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-slate-950/20" />
-
-                  <div className="relative z-20 bg-white/85 backdrop-blur-md border border-white/60 p-4 sm:p-5 rounded-2xl shadow-xl max-w-lg mt-auto">
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 block mb-0.5">
-                      Specification Details
+              {/* TAB 4: Booking.com & OTA Integration (Light Theme) */}
+              {activeSidebarFeature.id === "ota" && (
+                <div className="bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/90 shadow-xs space-y-4 font-sans select-none text-slate-900">
+                  
+                  {/* Header */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">
+                        Channel Integrations
+                      </span>
+                      <h3 className="text-base sm:text-lg font-extrabold text-slate-950 mt-0.5">
+                        Unified Channel Management
+                      </h3>
+                    </div>
+                    <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-bold px-2.5 py-1 rounded-full">
+                      Zero Double Bookings
                     </span>
-                    <h3 className="text-lg sm:text-xl font-extrabold text-slate-950 leading-tight">
-                      {activeSidebarFeature.headline}
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-medium mt-1">
-                      {activeSidebarFeature.description}
-                    </p>
+                  </div>
+
+                  {/* Channel Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {[
+                      { name: "Booking.com", sync: "Updated 1m ago", status: "Connected", bg: "bg-blue-50/70 border-blue-200/80 text-blue-950" },
+                      { name: "Airbnb", sync: "Updated 2m ago", status: "Connected", bg: "bg-rose-50/60 border-rose-200/80 text-rose-950" },
+                      { name: "Agoda", sync: "Updated 3m ago", status: "Connected", bg: "bg-emerald-50/60 border-emerald-200/80 text-emerald-950" },
+                      { name: "Direct Engine", sync: "Real-Time", status: "Active", bg: "bg-sky-50/60 border-sky-200/80 text-sky-950" },
+                    ].map((ch) => (
+                      <div key={ch.name} className={`p-3 rounded-xl border ${ch.bg} flex flex-col justify-between space-y-2 shadow-2xs`}>
+                        <div className="flex justify-between items-center">
+                          <span className="font-bold text-xs">{ch.name}</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        </div>
+                        <div>
+                          <div className="text-[7.5px] text-slate-500 font-medium">{ch.sync}</div>
+                          <div className="text-[9px] font-bold text-emerald-700">● {ch.status}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Sync Table */}
+                  <div className="bg-slate-50/80 rounded-xl p-3 border border-slate-200/80 space-y-2 text-[10px]">
+                    <div className="flex justify-between text-slate-400 font-bold text-[8px] uppercase tracking-wider">
+                      <span>Recent Channel Activity</span>
+                      <span>Status</span>
+                    </div>
+                    <div className="space-y-1.5">
+                      <div className="flex justify-between items-center py-1 border-b border-slate-200/60">
+                        <span className="text-slate-800 font-medium">Booking.com: New Reservation (Villa Suite 102 - 3 Nights)</span>
+                        <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[8px] font-bold px-2 py-0.5 rounded">
+                          Blocked on Airbnb
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center py-1">
+                        <span className="text-slate-800 font-medium">Direct Booking: Room 104 Rate Updated to Rs. 28,000</span>
+                        <span className="bg-blue-50 text-blue-700 border border-blue-200 text-[8px] font-bold px-2 py-0.5 rounded">
+                          Updated on All Channels
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 5: Cross-Platform Access (100% Light Theme) */}
+              {activeSidebarFeature.id === "crossplatform" && (
+                <div className="bg-white rounded-2xl p-4 sm:p-5 text-slate-900 overflow-hidden relative shadow-xs space-y-4 font-sans select-none border border-slate-200/90">
+                  
+                  {/* Header */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600">
+                        Multi-Device Experience
+                      </span>
+                      <h3 className="text-base sm:text-lg font-extrabold text-slate-950 mt-0.5">
+                        Manage Your Villas Anywhere, On Any Device
+                      </h3>
+                    </div>
+                    <span className="bg-blue-50 text-blue-700 border border-blue-100 text-[9px] font-bold px-2.5 py-1 rounded-full">
+                      Desktop • Tablet • Mobile
+                    </span>
+                  </div>
+
+                  {/* Multi-Device Visual Mockup */}
+                  <div className="grid grid-cols-12 gap-3 items-center py-1 relative">
+                    
+                    {/* 1. Desktop Screen Mockup (Left 7 Cols - Light Window) */}
+                    <div className="col-span-7 bg-white rounded-xl border border-slate-200 shadow-sm p-2 space-y-2">
+                      <div className="flex items-center justify-between pb-1.5 border-b border-slate-100 bg-slate-50/80 -m-2 mb-0 p-2 rounded-t-xl">
+                        <div className="flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        </div>
+                        <span className="text-[7.5px] font-mono text-slate-600 bg-white px-2 py-0.5 rounded border border-slate-200 shadow-2xs">
+                          🔒 innhandler.com/app
+                        </span>
+                        <span className="text-[7px] font-bold text-slate-500">Desktop Web</span>
+                      </div>
+                      
+                      <div className="bg-slate-50/70 rounded-lg p-2 space-y-1.5 text-[8px] text-slate-900 border border-slate-100">
+                        <div className="flex justify-between items-center font-bold">
+                          <span className="text-slate-800">Villa Dashboard (44 Rooms)</span>
+                          <span className="text-emerald-600 text-[7px]">● 84% Occupied</span>
+                        </div>
+                        <div className="grid grid-cols-3 gap-1 text-[7px]">
+                          <div className="bg-white p-1.5 rounded-lg border border-slate-200/80 shadow-2xs">
+                            <span className="text-slate-400 block text-[5.5px] font-bold uppercase">TODAY IN</span>
+                            <span className="font-extrabold text-slate-900 text-[8.5px]">14</span>
+                          </div>
+                          <div className="bg-white p-1.5 rounded-lg border border-slate-200/80 shadow-2xs">
+                            <span className="text-slate-400 block text-[5.5px] font-bold uppercase">CHECK-OUT</span>
+                            <span className="font-extrabold text-slate-900 text-[8.5px]">8</span>
+                          </div>
+                          <div className="bg-white p-1.5 rounded-lg border border-slate-200/80 shadow-2xs">
+                            <span className="text-slate-400 block text-[5.5px] font-bold uppercase">REVENUE</span>
+                            <span className="font-extrabold text-blue-600 text-[8.5px]">312k</span>
+                          </div>
+                        </div>
+                        <div className="flex gap-1">
+                          <div className="flex-1 bg-emerald-50 border border-emerald-200 text-emerald-800 p-1 rounded-md text-[6.5px] font-bold truncate shadow-2xs">
+                            Rm 101 - Alex Morgan
+                          </div>
+                          <div className="flex-1 bg-amber-50 border border-amber-200 text-amber-800 p-1 rounded-md text-[6.5px] font-bold truncate shadow-2xs">
+                            Rm 104 - Sarah Jenkins
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 2. Mobile Phone Mockup (Right 5 Cols - Light Theme) */}
+                    <div className="col-span-5 bg-white rounded-2xl border-2 border-slate-300 p-2 shadow-lg relative space-y-1.5 -ml-2 z-10">
+                      <div className="w-8 h-1 bg-slate-300 rounded-full mx-auto" />
+                      
+                      <div className="bg-slate-50 rounded-xl p-2 space-y-1.5 text-[8px] border border-slate-200/80">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-slate-900 text-[8px]">Mobile PWA</span>
+                          <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[6px] font-bold px-1.5 py-0.5 rounded">Active</span>
+                        </div>
+
+                        <div className="bg-blue-600 p-1.5 rounded-lg text-white space-y-0.5 shadow-2xs">
+                          <div className="text-[6px] uppercase font-bold text-blue-100">Quick Check-in</div>
+                          <div className="text-[8.5px] font-extrabold">Room 202 - Ready</div>
+                        </div>
+
+                        <div className="space-y-1 text-[6.5px]">
+                          <div className="flex justify-between items-center bg-white p-1 rounded border border-slate-200 shadow-2xs">
+                            <span className="text-slate-800 font-medium truncate">David Miller (2N)</span>
+                            <span className="text-emerald-600 font-bold">Paid</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-white p-1 rounded border border-slate-200 shadow-2xs">
+                            <span className="text-slate-800 font-medium truncate">Villa Suite 105</span>
+                            <span className="text-amber-600 font-bold">Cleaning</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  {/* Bottom Feature Badges */}
+                  <div className="grid grid-cols-3 gap-2 pt-3 border-t border-slate-100 text-[8px] sm:text-[9px] font-medium text-slate-600">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                      <span>Optimized for Mobile &amp; Tablet</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                      <span>Installable (iOS / Android PWA)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-600" />
+                      <span>Touch &amp; Keyboard Friendly</span>
+                    </div>
                   </div>
                 </div>
               )}

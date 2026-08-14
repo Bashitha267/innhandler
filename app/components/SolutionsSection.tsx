@@ -12,7 +12,7 @@ export default function SolutionsSection() {
       title: "Modern & Responsive Design",
       description: "Clean, elegant, and mobile-friendly websites that provide a seamless experience on all devices.",
       linkText: "Learn More",
-      linkHref: "#solutions",
+      linkHref: "/contact",
       // Visual Card Top Content
       visual: (
         <div className="relative w-full h-48 sm:h-52 bg-slate-900 rounded-2xl overflow-hidden p-4 flex items-center justify-center border border-slate-800 shadow-inner group-hover:scale-[1.02] transition-transform duration-300">
@@ -65,7 +65,7 @@ export default function SolutionsSection() {
       title: "Direct Booking Integration",
       description: "Integrated booking engine that allows guests to book directly from your website with ease.",
       linkText: "Learn More",
-      linkHref: "#solutions",
+      linkHref: "/contact",
       // Visual Card Top Content
       visual: (
         <div className="relative w-full h-48 sm:h-52 bg-slate-50 rounded-2xl overflow-hidden p-3.5 border border-slate-200/80 flex items-center justify-between gap-3 group-hover:scale-[1.02] transition-transform duration-300">
@@ -111,7 +111,7 @@ export default function SolutionsSection() {
       title: "Fast & SEO Optimized",
       description: "Lightning-fast websites built with best practices to rank higher and drive more organic traffic.",
       linkText: "Learn More",
-      linkHref: "#solutions",
+      linkHref: "/contact",
       // Visual Card Top Content (Lighthouse Performance Score Widget)
       visual: (
         <div className="relative w-full h-48 sm:h-52 bg-white rounded-2xl overflow-hidden p-3.5 border border-slate-200/80 flex items-center justify-between gap-3 group-hover:scale-[1.02] transition-transform duration-300">

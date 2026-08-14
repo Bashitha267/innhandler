@@ -51,9 +51,9 @@ export default function HeroSection() {
   return (
     <section className="relative flex-1 flex flex-col justify-between max-w-7xl mx-auto px-6 lg:px-12 py-3 lg:py-4 w-full">
       {/* 2-Column Split Hero Layout: Left Content & Right Phone Image */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center flex-1">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-10 items-center flex-1">
         {/* Left Column Content */}
-        <div className="lg:col-span-6 space-y-4 lg:space-y-5 text-left">
+        <div className="lg:col-span-6 space-y-4 lg:space-y-5 text-center lg:text-left">
           {/* Soft Blue Pill Badge */}
           <div>
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 text-xs font-semibold tracking-wide shadow-xs">
